@@ -63,7 +63,10 @@ const CustomerForm = ({ initValues }: CustomerFormProps) => {
               />
               <FormInput name="email" placeholder="Email" />
               <FormInput name="phoneNumber" placeholder="Phone number" />
-              <FormDatePicker name="lastContacted" placeholder="Phone number" />
+              <FormDatePicker
+                name="lastContacted"
+                placeholder="Last contacted"
+              />
               <Button
                 type="primary"
                 htmlType="submit"

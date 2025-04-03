@@ -1,10 +1,12 @@
 "use client";
 
+import { ROUTES } from "@/constant";
 import { useQueryParams } from "@/hooks";
 import { useFetchCustomers } from "@/hooks/customer/useFetchCustomers";
 import { customerTableColumns } from "@/resources/customer";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Button, Input, Table } from "antd";
+import Link from "next/link";
 import { ChangeEvent, useRef, useState } from "react";
 
 export default function Home() {
@@ -48,7 +50,9 @@ export default function Home() {
           onChange={onSearchChange}
         />
 
-        <Button type="primary">Create customer</Button>
+        <Link href={ROUTES.CREATE_CUSTOMER}>
+          <Button type="primary">Create customer</Button>
+        </Link>
       </div>
       <Table
         dataSource={data?.customers || []}
