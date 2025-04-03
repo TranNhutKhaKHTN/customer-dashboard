@@ -27,9 +27,9 @@ const LoginPage = () => {
 
   const { handleSubmit } = formInstance;
 
-  const onSubmit = (values: ILoginFormValue) => {
+  const onSubmit = async (values: ILoginFormValue) => {
     setLoading(true);
-    setCookie(TOKEN_KEY, values?.email);
+    await setCookie(TOKEN_KEY, values?.email);
     setTimeout(() => {
       setLoading(false);
       replace(ROUTES.LOGIN);
