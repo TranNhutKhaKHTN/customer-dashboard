@@ -9,6 +9,7 @@ import { Button, Card } from "antd";
 import { setCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import { FormPassword, FormInput } from "@/components/form";
+import { useState } from "react";
 
 interface ILoginFormValue {
   email: string;
@@ -17,6 +18,7 @@ interface ILoginFormValue {
 
 const LoginPage = () => {
   const { push } = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const formInstance = useForm<ILoginFormValue>({
     defaultValues: loginDefaultValue,
@@ -26,8 +28,12 @@ const LoginPage = () => {
   const { handleSubmit } = formInstance;
 
   const onSubmit = (values: ILoginFormValue) => {
+    setLoading(true);
     setCookie(TOKEN_KEY, values?.email);
-    push(ROUTES.LOGIN);
+    setTimeout(() => {
+      setLoading(false);
+      push(ROUTES.LOGIN);
+    }, 2000);
   };
 
   return (
@@ -44,7 +50,12 @@ const LoginPage = () => {
             <div className="flex flex-col gap-3">
               <FormInput name="email" placeholder="Email" />
               <FormPassword name="password" placeholder="Password" />
-              <Button className="w-full" type="primary" htmlType="submit">
+              <Button
+                className="w-full"
+                type="primary"
+                htmlType="submit"
+                loading={loading}
+              >
                 Submit
               </Button>
             </div>
