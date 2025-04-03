@@ -1,7 +1,7 @@
 import { CUSTOMERS } from "@/_dp";
 import { NextResponse } from "next/server";
 
-export async function GET(_: Request, context: { params: { id: string } }) {
+export async function GET(_: Request, context: any) {
   const { id } = await context.params;
 
   const customer = CUSTOMERS.find((c) => c.id.toString() === id);

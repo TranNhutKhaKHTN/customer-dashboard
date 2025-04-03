@@ -7,9 +7,9 @@ import { customerTableColumns } from "@/resources/customer";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Button, Input, Table } from "antd";
 import Link from "next/link";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, Suspense, useRef, useState } from "react";
 
-export default function Home() {
+const Home = () => {
   const debounceRef = useRef<any>(null);
   const [searchKey, setSearchKey] = useState("");
 
@@ -75,4 +75,12 @@ export default function Home() {
       />
     </div>
   );
-}
+};
+
+const Customer = () => (
+  <Suspense>
+    <Home />
+  </Suspense>
+);
+
+export default Customer;
