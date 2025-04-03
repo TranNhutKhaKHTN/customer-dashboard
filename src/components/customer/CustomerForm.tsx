@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, Card, message } from "antd";
 import { FormProvider, useForm } from "react-hook-form";
 import { FormDatePicker, FormInput } from "@/components/form";
