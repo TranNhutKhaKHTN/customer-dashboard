@@ -32,13 +32,11 @@ const LoginPage = () => {
     ninetyDaysFromNow.setDate(ninetyDaysFromNow.getDate() + 90);
 
     setLoading(true);
-    await setCookie(TOKEN_KEY, values?.email, {
-      expires: ninetyDaysFromNow,
-    });
+    setCookie(TOKEN_KEY, values.email);
     setTimeout(() => {
       setLoading(false);
       replace(ROUTES.LOGIN);
-    }, 2000);
+    }, 1500);
   };
 
   return (

@@ -1,3 +1,4 @@
+// TODO: enhance view login/main with middleware
 import { NextResponse, NextRequest } from "next/server";
 
 const PUBLIC_FILE = /\.(.*)$/;
