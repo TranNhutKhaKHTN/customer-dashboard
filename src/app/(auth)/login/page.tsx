@@ -28,8 +28,13 @@ const LoginPage = () => {
   const { handleSubmit } = formInstance;
 
   const onSubmit = async (values: ILoginFormValue) => {
+    const ninetyDaysFromNow = new Date();
+    ninetyDaysFromNow.setDate(ninetyDaysFromNow.getDate() + 90);
+
     setLoading(true);
-    await setCookie(TOKEN_KEY, values?.email);
+    await setCookie(TOKEN_KEY, values?.email, {
+      expires: ninetyDaysFromNow,
+    });
     setTimeout(() => {
       setLoading(false);
       replace(ROUTES.LOGIN);
