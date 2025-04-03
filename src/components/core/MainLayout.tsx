@@ -3,10 +3,12 @@
 
 import React, { PropsWithChildren, useState } from "react";
 import type { MenuProps } from "antd";
-import { Avatar, Flex, Layout, Menu, Typography } from "antd";
+import { Avatar, Button, Flex, Layout, Menu, Typography } from "antd";
 import { PieChartFilled, UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import { ROUTES } from "@/constant";
+import { ROUTES, TOKEN_KEY } from "@/constant";
+import { deleteCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { Title, Text } = Typography;
@@ -37,6 +39,12 @@ const items: MenuItem[] = [
 
 const MainLayout = ({ children }: PropsWithChildren) => {
   const [collapsed, setCollapsed] = useState(false);
+  const { push } = useRouter();
+
+  const onLogout = () => {
+    deleteCookie(TOKEN_KEY);
+    push(ROUTES.LOGIN);
+  };
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -65,15 +73,15 @@ const MainLayout = ({ children }: PropsWithChildren) => {
       <Layout>
         <Header className="p-0 !bg-white">
           <div className="w-full h-full flex justify-between items-center">
-            <Text strong className="text-xl">
-              Customer list
+            <Text strong className="text-2xl">
+              Customer management
             </Text>
             <div className="h-full items-center flex gap-3">
               <Avatar
                 style={{ backgroundColor: "#87d068" }}
                 icon={<UserOutlined />}
               />
-              <div>@username</div>
+              <Button onClick={onLogout}>Logout</Button>
             </div>
           </div>
         </Header>
