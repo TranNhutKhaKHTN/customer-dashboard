@@ -17,7 +17,7 @@ interface ILoginFormValue {
 }
 
 const LoginPage = () => {
-  const { replace } = useRouter();
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   const formInstance = useForm<ILoginFormValue>({
@@ -35,7 +35,7 @@ const LoginPage = () => {
     setCookie(TOKEN_KEY, values.email);
     setTimeout(() => {
       setLoading(false);
-      replace(ROUTES.LOGIN);
+      router.push(ROUTES.HOME);
     }, 1500);
   };
 
