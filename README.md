@@ -27,4 +27,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## View deployment
 
-[customer-dashboard-psi.vercel.app](customer-dashboard-psi.vercel.app)
+[https://customer-dashboard-psi.vercel.app](https://customer-dashboard-psi.vercel.app)
